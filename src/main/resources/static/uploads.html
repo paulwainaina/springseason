@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photo upload</title>
+</head>
+<body>
+    <input id="fileUpload" type="file" name="fileUpload"/>
+    <button id="uploadButton" onclick="upload()">Upload</button>
+<script>
+    async function upload(){
+        let formData= new FormData();
+        formData.append("data",fileUpload.files[0]);
+        await fetch('http://localhost:8080/cows/upload/1',{
+        method:"POST",body:formData}).then(res=> res.text()).then(text=> console.log(text))
+    }
+</script>
+</body>
+</html>
